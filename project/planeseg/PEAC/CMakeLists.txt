@@ -19,10 +19,15 @@ add_library(${TARGET_NAME} SHARED ${TARGET_SOURCES})
 #####################################
 # Define Target Properties
 #####################################
-target_include_directories(${TARGET_NAME} PUBLIC $<BUILD_INTERFACE:${TARGET_INCLUDE_FOLDER}>)
+target_include_directories(
+    ${TARGET_NAME}
+    SYSTEM
+    PUBLIC
+    $<BUILD_INTERFACE:${TARGET_INCLUDE_FOLDER}>
+)
 
 # Suppress error from pcl_isnan
-target_compile_options(${TARGET_NAME} PRIVATE "-fpermissive")
+target_compile_options(${TARGET_NAME} PUBLIC "-fpermissive")
 
 target_link_libraries(${TARGET_NAME} PUBLIC ${PCL_LIBRARIES})
 target_link_libraries(${TARGET_NAME} PUBLIC ${OpenCV_LIBS})
