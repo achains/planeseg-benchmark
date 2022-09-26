@@ -1,1 +1,2 @@
 add_subdirectory(planeseg)
+add_subdirectory(benchmark)
