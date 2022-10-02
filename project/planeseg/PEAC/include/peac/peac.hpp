@@ -11,10 +11,14 @@ namespace peac {
 
     class PEAC{
      public:
-        PEAC(std::string const &iniFileName): config_(iniFileName) {}
-        void load_config(std::string const & config_filepath);
-        int run();
+        PEAC(std::string const &iniFileName): config_(iniFileName) {
+            init_pf_params();
+        }
+        int run(const ImageXYZ* pointsIn, std::vector<std::vector<int>>* labelsOut);
+
+        ImageXYZ read_pcd(std::string const &pcdFileName);
      private:
+        void init_pf_params();
         PlaneFitter pf_;
         ini_read::IniConfig config_;
     };

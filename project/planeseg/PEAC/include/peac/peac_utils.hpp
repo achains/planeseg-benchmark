@@ -22,20 +22,21 @@
 namespace peac_utils {
     template<class PointT>
     struct OrganizedImage3D {
-        const pcl::PointCloud<PointT>& cloud;
+        std::shared_ptr<pcl::PointCloud<PointT>> cloud;
         //note: ahc::PlaneFitter assumes mm as unit!!!
         const double unitScaleFactor;
 
         OrganizedImage3D(const pcl::PointCloud<PointT>& c) : cloud(c), unitScaleFactor(1) {}
         OrganizedImage3D(const OrganizedImage3D& other) : cloud(other.cloud), unitScaleFactor(other.unitScaleFactor) {}
+        OrganizedImage3D(std::shared_ptr<pcl::PointCloud<PointT>> p_cloud) : cloud(p_cloud), unitScaleFactor(1) {}
 
-        inline int width() const { return cloud.width; }
-        inline int height() const { return cloud.height; }
+        inline int width() const { return cloud->width; }
+        inline int height() const { return cloud->height; }
         inline bool get(const int row, const int col, double& x, double& y, double& z) const {
-            const PointT& pt=cloud.at(col,row);
+            const PointT& pt=cloud->at(col,row);
             x=pt.x*unitScaleFactor; y=pt.y*unitScaleFactor; z=pt.z*unitScaleFactor; //TODO: will this slowdown the speed?
 
-            return pcl_isnan(z)==0; //return false if current depth is NaN
+            return std::isnan(z)==0; //return false if current depth is NaN
         }
     };
     typedef OrganizedImage3D<pcl::PointXYZ> ImageXYZ;
