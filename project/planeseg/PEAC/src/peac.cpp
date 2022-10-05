@@ -32,7 +32,6 @@ namespace peac {
         pf_.params.similarityTh_refine = std::cos(MACRO_DEG2RAD(config_.iniGet("similarityDegreeTh_refine",MACRO_RAD2DEG(pf_.params.similarityTh_refine))));
     }
 
-    // TODO: Memory leak problems (!)
     ImageXYZ PEAC::read_pcd(std::string const &pcdFileName) {
         std::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> cloud = std::make_shared<pcl::PointCloud<pcl::PointXYZ>>();
 
@@ -44,13 +43,11 @@ namespace peac {
                     Eigen::Affine3f(Eigen::UniformScaling<float>(
                             static_cast<float>(config_.iniGet<double>("unitScaleFactor", 1.0f)))));
         }
-        std::cout << "OK\n";
         return ImageXYZ(cloud);
     }
 
     int PEAC::run(const ImageXYZ* pointsIn, std::vector<std::vector<int>>* labelsOut){
         pf_.run(pointsIn, labelsOut, 0, 0, false);
-        std::cout << "Number of extracted planes: " << labelsOut->size() << '\n';
         return 0;
     }
 } // namespace peac

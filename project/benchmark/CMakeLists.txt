@@ -19,7 +19,7 @@ add_dependencies(${TARGET_NAME} benchmark::benchmark)
 # Install data for benchmark
 #####################################
 file(COPY configs DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
+file(COPY data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 #####################################
 # Define Target Properties
 #####################################
