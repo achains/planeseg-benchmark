@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+# .idea
+.idea
+
+# Build artifacts
+build
+cmake-build-release
+cmake-build-debug
+
+# Python
+__pycache__
+venv

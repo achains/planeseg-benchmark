@@ -1,0 +1,2 @@
+open3d==0.15.2
+git+https://github.com/klintan/pypcd.git

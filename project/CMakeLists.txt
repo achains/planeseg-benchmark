@@ -1,0 +1,3 @@
+add_subdirectory(3rd_party)
+add_subdirectory(planeseg)
+add_subdirectory(benchmark)
