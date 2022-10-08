@@ -2,6 +2,7 @@
 #include <filesystem>
 
 #include "peac/peac.hpp"
+#include "cape/cape.h"
 
 
 namespace global{

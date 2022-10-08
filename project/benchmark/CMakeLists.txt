@@ -12,7 +12,10 @@ add_executable(${TARGET_NAME} ${TARGET_SOURCES})
 #####################################
 # Target dependencies
 #####################################
+# Plane Segmentation Algorithms
 add_dependencies(${TARGET_NAME} peaclib)
+add_dependencies(${TARGET_NAME} capelib)
+# Google Benchmark Library
 add_dependencies(${TARGET_NAME} benchmark::benchmark)
 
 #####################################
@@ -24,4 +27,5 @@ file(COPY data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 # Define Target Properties
 #####################################
 target_link_libraries(${TARGET_NAME} PRIVATE peaclib)
+target_link_libraries(${TARGET_NAME} PRIVATE capelib)
 target_link_libraries(${TARGET_NAME} PRIVATE benchmark::benchmark)
