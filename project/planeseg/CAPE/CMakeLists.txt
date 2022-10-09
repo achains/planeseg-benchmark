@@ -8,6 +8,7 @@ set(TARGET_SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Histogram.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Params.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/PlaneSeg.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/CylinderSeg.cpp
 )
 
 #####################################

@@ -38,7 +38,7 @@ void readIni(stringstream &params_buff) {
         std::string key, value;
         size_t eqPos = line.find_first_of('=');
         if (eqPos == std::string::npos || eqPos == 0) {
-            std::cout << "[iniLoad] ignore line:" << line << std::endl;
+//            std::cout << "[iniLoad] ignore line:" << line << std::endl;
             continue;
         }
         key = line.substr(0, eqPos);
